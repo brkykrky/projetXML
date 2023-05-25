@@ -53,4 +53,10 @@ public class StbController
         //ToDo : convert flux, create and return result
         return null;
     }
+
+    @DeleteMapping(value = "/stb23/delete/{id}")
+    public @ResponseBody ResponseEntity<STBCreatedOutput> delete(@PathVariable Long id)
+    {
+        return stbService.deleteStb(id) ? ResponseEntity.ok(new STBCreatedOutput(id)) : ResponseEntity.badRequest().build();
+    }
 }

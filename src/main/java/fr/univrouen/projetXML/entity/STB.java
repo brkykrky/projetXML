@@ -1,10 +1,6 @@
 package fr.univrouen.projetXML.entity;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlAnyAttribute;
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
 import java.util.Date;
@@ -18,4 +14,10 @@ public class STB {
     private String description;
     private Date date;
     private String clientName;
+    @OneToOne
+    private Client client;
+    @OneToOne
+    private Team team;
+    @OneToOne
+    private Features features;
 }

@@ -34,4 +34,15 @@ public class STBService {
         stbRepository.save(stb);
         return new STBCreatedOutput(stb.getId());
     }
+
+    public boolean deleteStb(Long id){
+        try{
+            stbRepository.deleteById(id);
+            return true;
+        }
+        catch (Exception e){
+            System.out.println("Error delete :: " + e.getMessage());
+            return false;
+        }
+    }
 }
