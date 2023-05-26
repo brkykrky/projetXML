@@ -6,23 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-import java.util.Date;
-
 @Entity
 @Data
-public class Feature {
+public class Function {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //Attributes
-    private String name;
-    private int section;
-    private int number;
-
-    //Elements
-    private String description;
-    private int priority;
-    private Date delivery;
-    private String comment;
+    private String value;
 }

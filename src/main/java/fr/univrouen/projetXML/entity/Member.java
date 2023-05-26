@@ -16,5 +16,6 @@ public class Member {
     @OneToOne
     private Person person;
 
-    //functions
+    @OneToMany
+    private List<Function> functions = new ArrayList<Function>();
 }
