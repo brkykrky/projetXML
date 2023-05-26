@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik ,Formik} from 'formik';
 import * as Yup from 'yup';
 import {
-  TextField,
+  TextField ,
   Button,
   Select,
   MenuItem,
@@ -112,28 +112,57 @@ const InsertNewStb = () => {
     <Container>
       <Box p={2} mb={2} bgcolor="lightgray">
         <Typography>Informations générale de la STB</Typography>
-        <Grid display="flex" flexDirection="row" spacing={2} alignItems="center" mb={2}>
-          <TextField name="title" label="Title" />
-          <TextField name="version" label="Version" />
-          <TextField name="date" label="Date" />
+        <Grid container display="flex" flexDirection="row" spacing={2} alignItems="center" mb={2}>
+          
+          <Grid item xs={3}>
+            <TextField fullWidth size='small' name="title" label="Title" />
+          </Grid>  
+
+          <Grid item xs={3}>
+          <TextField fullWidth size='small' name="version" label="Version" />
+          </Grid> 
+
+          <Grid item xs={3}>
+          <TextField fullWidth size='small' name="date" label="Date" /> 
+          </Grid> 
+
+          <Grid item xs={6}>
+            <TextField fullWidth size='small' multiline name="description" label="description" />
+          </Grid> 
+  
         </Grid>
-        <TextField multiline name="description" />
+       
       </Box>
 
       <Box p={2} mb={2} bgcolor="lightgray">
-        <Typography>Client</Typography>
-        <TextField label="Entity" name="client.entity" />
+        <Box marginBottom={2}>
 
-        <Grid display="flex" flexDirection="row" spacing={2} alignItems="center" mb={2}>
-          <TextField name="client.person" />
-          <TextField name="client.mail" />
+        <Typography>Client</Typography>
+        <TextField size='small' label="Entity" name="client.entity" />
+        </Box>
+     
+        
+        <Grid display="flex" flexDirection="row" columnGap={2}  alignItems="center" >
+        <TextField size="small"  name="firstName" label="First Name" />
+        <TextField size="small"  name="lastName" label="Last Name" />
+        <Select size='small' sx={{ minWidth: '100px' }} label="Gender" value={'Mr'} name="gender">
+          {genders.map((gender) => {
+            return (
+              <MenuItem value={gender} key={gender}>
+                {gender}
+              </MenuItem>
+            );
+          })}
+        </Select>
         </Grid>
+
+
       </Box>
 
       <Box p={2} mb={2} bgcolor="lightgray">
         <Typography>Team</Typography>
 
-        <Select
+        <Select size="small"
           sx={{ minWidth: '100px' }}
           label="Nombre d'éléments du groupe"
           value={numberMemeber}
@@ -153,25 +182,20 @@ const InsertNewStb = () => {
           <Typography>Members</Typography>
           <FormMemebers numberMember={numberMemeber} />
         </Box>
-
-        <Grid display="flex" flexDirection="row" spacing={2} alignItems="center" mb={2}>
-          <TextField name="team.member1.person" />
-          <TextField name="team.member1.mail" />
-        </Grid>
       </Box> 
 
 
       <Box>
-        <Box>
-            <Typography>Features</Typography> 
-            <Button onClick={handleClickNbrFeature}>add new feature</Button>
+        <Box sx={{ marginBottom:3, display:"flex" ,flexDirection:"row" ,alignItems:"center" , justifyContent:"start"}}>
+            <Typography sx={{marginRight:2}}>Features</Typography> 
+            <Button size="small" variant="contained"onClick={handleClickNbrFeature}>add new feature</Button>
         </Box>
         <Features  nbrfeatures={nbrfeatures}/>
       </Box>
 
 
-      <Button type='submit' onSubmit={formik.handleSubmit}>
-        Send nude 
+      <Button type='submit' variant='contained' onSubmit={formik.handleSubmit}>
+        Insert new STB
       </Button>
     </Container>
   );

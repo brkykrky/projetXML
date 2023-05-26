@@ -34,7 +34,7 @@ return (
            {error ? <div dangerouslySetInnerHTML={{ __html: data }} />
 
            :
-            <>I got the help</>
+            <>Help</>
            }
         </>
     }</>
